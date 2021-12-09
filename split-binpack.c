@@ -7,13 +7,13 @@ FILE *fps,*fpd;
 char fns[256],fnd[256],fno[256],w[256];
 int x,count;
 int nr=0;
-int limit = 1000000;          // one million
+int limit = 1000000;	// binpack size one million
 char *q;
 int total=0;
 
 int main(int argc, char *argv[]) {
 
-        if (argc==2)						                // binpack size
+        if (argc==2)	// binpack size
          { strcpy(w,argv[1]); limit=atoi(w); }
 
 again:	printf("Enter Binpack File Name : "); gets(fns);
