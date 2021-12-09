@@ -17,11 +17,11 @@ int main(int argc, char *argv[]) {
          { strcpy(w,argv[1]); limit=atoi(w); }
 
 again:	printf("Enter Binpack File Name : "); gets(fns);
-	    q=strstr(fns,".binpack"); if (q) q[0]=0;
-	    strcpy(fnd,fns);
-	    strcat(fns,".binpack");
-	    fps=fopen(fns,"rb");
-		if (fps==0) { printf("\nFile %s not present, try again",fns); goto again; }
+	q=strstr(fns,".binpack"); if (q) q[0]=0;
+	strcpy(fnd,fns);
+	strcat(fns,".binpack");
+	fps=fopen(fns,"rb");
+	if (fps==0) { printf("\nFile %s not present, try again",fns); goto again; }
 
 loop:   nr++;
         sprintf(fno,"%s-%d.binpack",fnd,nr);
@@ -29,10 +29,10 @@ loop:   nr++;
         count=0;
 
 read:   x=fread(&k1,8,1,fps); if (x<1) { fclose(fps); goto done; }
-	      fread(&k2,8,1,fps);
-	      fread(&k3,8,1,fps);
-	      fread(&k4,8,1,fps);
-	      fread(&k5,8,1,fps);
+	  fread(&k2,8,1,fps);
+	  fread(&k3,8,1,fps);
+	  fread(&k4,8,1,fps);
+	  fread(&k5,8,1,fps);
 
           fwrite(&k1,8,1,fpd);
           fwrite(&k2,8,1,fpd);
@@ -47,7 +47,6 @@ read:   x=fread(&k1,8,1,fps); if (x<1) { fclose(fps); goto done; }
 
         goto loop;
 
-
 done:   printf("\n\nDone... counted %d binpacks ",total);
 
         fclose(fps);
@@ -55,5 +54,5 @@ done:   printf("\n\nDone... counted %d binpacks ",total);
 
         gets(w);
 
-		return 0;
+	return 0;
 }
